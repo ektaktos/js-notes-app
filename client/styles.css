@@ -16,3 +16,9 @@
     text-transform: capitalize;
     text-align: center;
 }
+.btn-delete{
+    font-size: 13px;
+    background-color: brown;
+    padding:5px;
+    border: none;
+}

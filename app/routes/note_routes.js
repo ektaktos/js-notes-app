@@ -40,7 +40,7 @@ module.exports = function(app,db){
         const details = {'_id':new ObjectId(id)};
         db.collection('notes').remove(details, (err,item) => {
             if (err) {
-                res.send({'error':'An error has occoured'});
+                res.send({'error':'An error has occoured' + id});
             } else {
                 res.send('Note ' + id + ' deleted');
             }

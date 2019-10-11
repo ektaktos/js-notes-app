@@ -1,5 +1,13 @@
 <template>
     <div class="notes">
+        <div v-if="notes = []">
+            <div class="card">
+                <div class="card-body" align="center">
+                    <h5>No Content available yet</h5>
+                    <p>Check your internet connection and try again.</p>
+                </div>
+            </div>
+        </div>
         <div v-for="note in notes" v-bind:key="note._id">
             <router-link :to="{ name: 'note', params: {id : note._id}}">
             <div class="card">
