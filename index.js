@@ -6,6 +6,8 @@ const cors = require('cors');
 const port = 8000;
 const db = require('./config/db');
 
+
+
 app = express();
 app.use(cors());
 // app.use(function(req,res,next){
@@ -15,7 +17,7 @@ app.use(cors());
 //     next();
 // });
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.listen(port, () => {
     console.log('We are live on port ' + port);

@@ -15,6 +15,7 @@
 .note-links{
     text-transform: capitalize;
     text-align: center;
+    margin-bottom: 10px;
 }
 .btn-delete{
     font-size: 13px;

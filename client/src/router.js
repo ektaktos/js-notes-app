@@ -3,6 +3,9 @@ import Router from 'vue-router';
 import Notes from './components/Notes.vue';
 import Note from './components/Note.vue';
 import Addnote from './components/Addnote.vue';
+import Login from './components/Login.vue';
+import Register from './components/Register.vue';
+import Logout from './components/Logout.vue';
 
 Vue.use(Router);
 
@@ -25,6 +28,21 @@ export default new Router({
       path: '/add',
       name: 'addNote',
       component: Addnote,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: Logout,
     },
   ],
 });

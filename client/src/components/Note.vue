@@ -1,13 +1,13 @@
 <template>
     <div class="notes">
-            <div v-if="note = []">
+            <!-- <div v-if="note = []">
             <div class="card">
                 <div class="card-body" align="center">
                     <h5>No Content available yet</h5>
                     <p>Check your internet connection and try again.</p>
                 </div>
             </div>
-            </div>
+            </div> -->
             <div class="card">
                 <div class="card-body row">
                     <div class="col-md-11">
@@ -43,7 +43,7 @@ export default {
         getNote: function(){
             let id = this.id
             let self = this
-            axios.get("http://localhost:8000/notes/"+id).then((response) => {
+            axios.get("http://localhost:8000/notes/"+id, {headers: {"Authorization":'Bearer '+ localStorage.getItem("token")}}).then((response) => {
                 console.log(response)
                 self.$set(this,'note',response.data)
                 })
@@ -53,7 +53,7 @@ export default {
         },
         deleteNote: function(id){
             let self = this
-            axios.delete("http://localhost:8000/notes/"+id).then((response) => {
+            axios.delete("http://localhost:8000/notes/"+id, {headers: {"Authorization":'Bearer '+ localStorage.getItem("token")}}).then((response) => {
                 console.log(response)
                 self.$set(this,'note',response.data)
                 })

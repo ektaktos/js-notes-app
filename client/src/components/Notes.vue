@@ -1,13 +1,13 @@
 <template>
     <div class="notes">
-        <div v-if="notes = []">
+        <!-- <div v-if="notes = []">
             <div class="card">
                 <div class="card-body" align="center">
                     <h5>No Content available yet</h5>
                     <p>Check your internet connection and try again.</p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div v-for="note in notes" v-bind:key="note._id">
             <router-link :to="{ name: 'note', params: {id : note._id}}">
             <div class="card">
@@ -37,11 +37,12 @@ export default {
     methods: {
         getNotes: function(){
             let self = this
-            axios.get("http://localhost:8000/allnotes").then((response) => {
+            axios.get("http://localhost:8000/allnotes", {headers: {"Authorization": 'Bearer '+localStorage.getItem("token")}}).then((response) => {
                 console.log(response)
                 self.$set(this,'notes',response.data)
                 })
                 .catch((errors) => {
+                    console.log(localStorage.getItem("token"))
                     console.log(errors)
                 })
         }
