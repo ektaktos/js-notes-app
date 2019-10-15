@@ -41,7 +41,7 @@ export default {
                 body: this.body
             }
             console.log(data)
-            axios.post('http://localhost:8000/notes',data).then((response) => {
+            axios.post('http://localhost:8000/notes',data, {headers: {"Authorization": 'Bearer '+localStorage.getItem("token")}}).then((response) => {
                 console.log(response)
                 router.push("/")
             })

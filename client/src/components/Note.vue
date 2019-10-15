@@ -18,7 +18,7 @@
                         <span v-else><b>Body: </b> <small>No Content available here</small></span>
                     </div>
                     <div class="col-md-1">
-                        <!-- <button class="btn-delete" @:click="deleteNote(note._id)">Delete</button> -->
+                        <button class="btn-delete" @click="deleteNote(note._id)">Delete</button>
                     </div>
                 </div>
             </div>
@@ -29,6 +29,7 @@
 <script>
 /* eslint-disable */
 import axios from "axios";
+import router from '../router'
 export default {
     name: "Note",
     props: {
@@ -46,19 +47,25 @@ export default {
             axios.get("http://localhost:8000/notes/"+id, {headers: {"Authorization":'Bearer '+ localStorage.getItem("token")}}).then((response) => {
                 console.log(response)
                 self.$set(this,'note',response.data)
+                if (response.data == "") {
+                    router.push('/')
+                }
                 })
                 .catch((errors) => {
                     console.log(errors)
                 })
         },
         deleteNote: function(id){
+            console.log(id)
             let self = this
             axios.delete("http://localhost:8000/notes/"+id, {headers: {"Authorization":'Bearer '+ localStorage.getItem("token")}}).then((response) => {
                 console.log(response)
                 self.$set(this,'note',response.data)
+                router.push('/')
                 })
                 .catch((errors) => {
                     console.log(errors)
+                    router.push('/')
                 })
         }
     },

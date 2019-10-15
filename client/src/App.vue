@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="notes">
-      <div class="note-links">
+      <div class="note-links row offset-md-5">
         <router-link to="/">
           Notes
         </router-link>
@@ -36,22 +36,25 @@ export default {
   name: 'App',
   data(){
     return{
-      loggedIn: false
+      loggedIn: true
     }
   },
   methods:{
     checkAuth: function(){
-      let auth = localStorage.getItem("token");
+      const auth = localStorage.getItem("token");
       if (auth) {
         this.loggedIn = true
       }else{
         this.loggedIn = false
       }
+    },
+    say: function (message) {
+      alert(message)
     }
   },
   updated(){
     this.checkAuth()
-  }
+  },
 }
 </script>
 
