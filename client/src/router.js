@@ -6,6 +6,7 @@ import Addnote from './components/Addnote.vue';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import Logout from './components/Logout.vue';
+import Update from './components/UpdateNote.vue';
 
 Vue.use(Router);
 
@@ -43,6 +44,12 @@ export default new Router({
       path: '/logout',
       name: 'logout',
       component: Logout,
+    },
+    {
+      path: '/update/:id',
+      name: 'update',
+      component: Update,
+      props: true,
     },
   ],
 });

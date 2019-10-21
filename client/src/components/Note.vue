@@ -10,7 +10,7 @@
             </div> -->
             <div class="card">
                 <div class="card-body row">
-                    <div class="col-md-11">
+                    <div class="col-md-10">
                         <li>Id: {{ note._id }} </li>
                         <span v-if="note.title != null"><b>Title:</b> {{ note.title}}</span>
                         <span v-else><b>Title: </b> <small>No Content available here</small></span>
@@ -20,6 +20,12 @@
                     <div class="col-md-1">
                         <button class="btn-delete" @click="deleteNote(note._id)">Delete</button>
                     </div>
+                    <router-link :to="{ name: 'update', params: { sn : note._id}}">
+                    <div class="col-md-1">
+                        <button class="btn-edit">Edit</button>
+                    </div>
+                    </router-link>
+                    
                 </div>
             </div>
         <!-- </div> -->

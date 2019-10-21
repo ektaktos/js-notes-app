@@ -92,7 +92,7 @@ module.exports = function(app,db){
     app.put('/notes/:id', validateToken, (req,res) => {
         const id = req.params.id;
         const details ={'_id':new ObjectId(id)};
-        const note = {description: req.body.description, title:req.body.title};
+        const note = {body: req.body.body, title:req.body.title};
         db.collection('notes').update(details, note, (err,result) => {
             if (err) {
                 res.send({'error':'An error has occured'});
